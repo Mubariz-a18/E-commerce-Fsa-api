@@ -22,6 +22,7 @@ const updateProduct = (_id, data) => {
     const { brand,price, inStock, } = data;
     return productModel.updateOne({_id }, {
         $set: {
+            _id:productModel._id,
             brand,
             price,
             inStock,
