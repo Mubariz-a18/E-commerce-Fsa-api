@@ -31,8 +31,8 @@ const getProducts = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
-        const brands = req.params.brand;
-        await productRepository.updateProduct(brands, req.body);
+        const _id = req.params._id;
+        await productRepository.updateProduct(_id, req.body);
 
         res.status(204);
         res.send();
@@ -49,12 +49,12 @@ const updateProduct = async (req, res) => {
 //     )
 // }
 
-const getProductsByBrand = (req,res) => {
+const getProductsByBrand = (req, res) => {
     productRepository.getProductsByBrand(req.params.brand)
-    .then(product => res.status(200).json(product))
-    .catch(err => res.status(500).send('internal server error'))
+        .then(product => res.status(200).json(product))
+        .catch(err => res.status(500).send('internal server error'))
 }
 
 
 
-module.exports = { register, getProducts , getProductsByBrand,updateProduct }
+module.exports = { register, getProducts, getProductsByBrand, updateProduct }
