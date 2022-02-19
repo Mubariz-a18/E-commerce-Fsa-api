@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post('/register', productCtrl.register);
 router.put('/update/:_id',productCtrl.updateProduct)
+router.get('/page/:page/size/:size',productCtrl.getProducts)
 router.get('/', productCtrl.getProducts);
 router.get('/:brand',productCtrl.getProductsByBrand)
 

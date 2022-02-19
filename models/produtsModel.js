@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 const productModel = mongoose.model("product", {
+    userName: {
+        type: String,
+        minLength: [2, 'Minimun 2 charecters '],
+        maxLength: [100, 'Max 100 charecters'],
+        required: [true, 'UserName is Required']
+    },
+    password:{type:String,required: [true, 'Password is required']},
     brand: {
         type: String,
         minLength: [2, 'Minimun 2 charecters '],

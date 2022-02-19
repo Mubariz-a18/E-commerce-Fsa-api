@@ -19,10 +19,20 @@ const register = async (req, res) => {
 
 const getProducts = async (req, res) => {
     try {
-        const products = await productRepository.getProducts();
+        const pageIndex = +req.params.page;
+        const pageSize = +req.params.size;
+        const totalCount = await productRepository.getProductCount();
+        const totalPages = Math.ceil(totalCount / pageSize);
+        const products = await productRepository.getProducts(pageIndex, pageSize);
+        const response = {
+            data: products,
+            metaData: {
+                totalCount, totalPages
+            }
+        }
 
         res.status(200);
-        res.json(products);
+        res.json(response);
     } catch (e) {
         console.log(e)
         res.status(500).json('Internal Server Error');
