@@ -1,6 +1,6 @@
 const productModel = require('../models/produtsModel')
 
-const alredyExist = (e) => e.message && e.message.indexOf('duplicate key') > -1
+// const alredyExist = (e) => e.message && e.message.indexOf('duplicate key') > -1
 
 const add = (data) => {
     const product = new productModel(data);

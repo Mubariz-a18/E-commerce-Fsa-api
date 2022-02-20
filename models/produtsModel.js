@@ -6,6 +6,11 @@ const productModel = mongoose.model("product", {
         maxLength: [100, 'Max 100 charecters'],
         required: [true, 'UserName is Required']
     },
+    email: {
+        type:String,
+        required:[true,"email is required"],
+        unique:true
+    },
     password:{type:String,required: [true, 'Password is required']},
     brand: {
         type: String,
