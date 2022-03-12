@@ -20,4 +20,4 @@ mongoose.connect(config.dbconstr)
 
 app.use('/', defaultRoutes);
 app.use('/health',defaultRoutes)
-app.use('/commerce',productRouter)
+app.use('/',productRouter)

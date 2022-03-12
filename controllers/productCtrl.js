@@ -23,15 +23,15 @@ const register = async (req, res) => {
         res.status(201);
         res.send();
     } catch (e) {
-        handleErrors(e,res);
+        handleErrors(e, res);
     };
 }
 
 const getProducts = async (req, res) => {
     try {
-        const pageIndex = +req.params.page;
-        const pageSize = +req.params.size;
-        const totalCount = await productRepository.getProductCount();
+        const pageIndex = +req.params.page ;
+        const pageSize = +req.params.size ;
+        const totalCount = await productRepository.getProductCount(options);
         const totalPages = Math.ceil(totalCount / pageSize);
         const products = await productRepository.getProducts(pageIndex, pageSize);
         const response = {
@@ -41,13 +41,19 @@ const getProducts = async (req, res) => {
             }
         }
 
+
         res.status(200);
         res.json(response);
+        console.log(response.data)
+
     } catch (e) {
         console.log(e)
         res.status(500).json('Internal Server Error');
     }
 }
+
+
+
 
 const updateProduct = async (req, res) => {
     try {
@@ -74,7 +80,6 @@ const getProductsByBrand = (req, res) => {
         .then(product => res.status(200).json(product))
         .catch(err => res.status(500).send('internal server error'))
 }
-
 
 
 module.exports = { register, getProducts, getProductsByBrand, updateProduct }

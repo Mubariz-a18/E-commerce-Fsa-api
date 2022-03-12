@@ -1,21 +1,20 @@
 const productModel = require('../models/produtsModel')
 
-// const alredyExist = (e) => e.message && e.message.indexOf('duplicate key') > -1
-
 const add = (data) => {
     const product = new productModel(data);
     return product.save();
-};
-
+};    
 const getProducts = (pageIndex, pageSize) => {
-    const projection = { __v: 0, };
-    const filter = {};
-    const skipRows = pageIndex*pageSize;
-    return productModel.find(filter, projection)
-    .skip(skipRows).limit(pageSize);
+    const projection = { __v: 0, password: 0 };
+    const skipRows = pageIndex * pageSize;
+    return productModel.find(projection)
+        .skip(skipRows)
+        .limit(pageSize);
 }
 
+
 const getProductCount = () => {
+     const filter = {};
     return productModel.count();
 }
 
@@ -39,4 +38,10 @@ const updateProduct = (_id, data) => {
     });
 };
 
-module.exports = { add, getProducts, getProductsByBrand, updateProduct ,getProductCount};
+
+module.exports = { add,
+     getProducts, 
+     getProductsByBrand, 
+     updateProduct,
+      getProductCount
+     };

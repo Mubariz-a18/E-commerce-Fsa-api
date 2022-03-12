@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-router.get('/',defaultCtrl.home)
+router.get('/home',defaultCtrl.home)
 router.get('/health',defaultCtrl.health)
 
 
