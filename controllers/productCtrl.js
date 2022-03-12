@@ -31,7 +31,7 @@ const getProducts = async (req, res) => {
     try {
         const pageIndex = +req.params.page ;
         const pageSize = +req.params.size ;
-        const totalCount = await productRepository.getProductCount(options);
+        const totalCount = await productRepository.getProductCount();
         const totalPages = Math.ceil(totalCount / pageSize);
         const products = await productRepository.getProducts(pageIndex, pageSize);
         const response = {
