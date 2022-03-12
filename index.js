@@ -7,7 +7,7 @@ const productRouter = require('./Routes/productRouter')
 
 
 const app = express();
-const port = process.env.PORT
+const port = process.env.PORT || 4000
 
 app.listen(port,() =>{
     console.log("server is running on port " +port);
@@ -18,6 +18,5 @@ mongoose.connect(config.dbconstr)
     .catch(err => console.log('failed to connect to db'));
 
 
-app.use('/', defaultRoutes);
 app.use('/health',defaultRoutes)
 app.use('/',productRouter)
