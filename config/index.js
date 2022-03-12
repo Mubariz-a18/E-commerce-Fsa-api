@@ -1,5 +1,5 @@
 const config = {
-    dbconstr :'mongodb://localhost:27017/commerce' 
+    dbconstr :'mongodb+srv://Syedmubariz:<password>@cluster0.oedak.mongodb.net/test' 
 }
 
 module.exports = config
