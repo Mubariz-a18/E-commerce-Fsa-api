@@ -7,10 +7,10 @@ const productRouter = require('./Routes/productRouter')
 
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT
 
 app.listen(port,() =>{
-    console.log("server is running on port 4000");
+    console.log("server is running on port " +port);
 });
 app.use(bodyparser.json())
 mongoose.connect(config.dbconstr)
