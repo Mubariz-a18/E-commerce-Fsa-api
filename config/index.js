@@ -1,5 +1,5 @@
 const config = {
-    dbconstr :'mongodb+srv://Syedmubariz:Allahraheem@cluster0.oedak.mongodb.net/test' 
+    dbconstr : process.env.dbconstr 
 }
 
 module.exports = config
