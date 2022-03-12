@@ -18,5 +18,6 @@ mongoose.connect(config.dbconstr)
     .catch(err => console.log('failed to connect to db'));
 
 
+app.use('/', defaultRoutes);
 app.use('/health',defaultRoutes)
-app.use('/',productRouter)
+app.use('/api/products',productRouter)
